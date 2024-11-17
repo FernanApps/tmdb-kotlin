@@ -15,6 +15,7 @@ object JsonFactory {
         encodeDefaults = false
         ignoreUnknownKeys = true
         isLenient = true
+        explicitNulls = true
         allowSpecialFloatingPointValues = true
         prettyPrint = false
 

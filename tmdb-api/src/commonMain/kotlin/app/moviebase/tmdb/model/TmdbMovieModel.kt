@@ -58,7 +58,8 @@ enum class TmdbMovieStatus(val value: String) {
         fun find(value: String?) = entries.find { it.value == value }
     }
 }
-
+// kotlinx.serialization.MissingFieldException: Fields [genre_ids, popularity, vote_count, video, vote_average]
+// are required for type with serial name 'movie', but they were missing at path: $.results[14]
 @Serializable
 @SerialName("movie")
 data class TmdbMovie(
@@ -68,16 +69,16 @@ data class TmdbMovie(
     @SerialName("release_date")
     @Serializable(LocalDateSerializer::class)
     val releaseDate: LocalDate? = null,
-    @SerialName("genre_ids") override val genresIds: List<Int>,
+    @SerialName("genre_ids") override val genresIds: List<Int> = emptyList(),
     @SerialName("id") override val id: Int,
     @SerialName("original_title") val originalTitle: String,
     @SerialName("original_language") override val originalLanguage: String,
     @SerialName("title") val title: String,
     @SerialName("backdrop_path") override val backdropPath: String?,
-    @SerialName("popularity") override val popularity: Float,
-    @SerialName("vote_count") override val voteCount: Int,
-    @SerialName("video") val video: Boolean,
-    @SerialName("vote_average") override val voteAverage: Float
+    @SerialName("popularity") override val popularity: Float = 0f,
+    @SerialName("vote_count") override val voteCount: Int = 0,
+    @SerialName("video") val video: Boolean = false,
+    @SerialName("vote_average") override val voteAverage: Float = 0f
 ) : TmdbMediaListItem, TmdbSearchableListItem
 
 @Serializable
