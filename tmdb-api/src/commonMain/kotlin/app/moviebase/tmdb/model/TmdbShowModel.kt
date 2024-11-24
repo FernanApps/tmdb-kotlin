@@ -118,7 +118,7 @@ data class TmdbShowDetail(
     @SerialName("production_companies") val productionCompanies: List<TmdbCompany>? = null,
     val homepage: String? = null,
     @SerialName("in_production") val inProduction: Boolean,
-    val seasons: List<TmdbSeason>,
+    val seasons: List<TmdbSeasonDetail>,
     val networks: List<TmdbNetwork> = emptyList(),
     val status: TmdbShowStatus? = null,
     val type: TmdbShowType? = null,

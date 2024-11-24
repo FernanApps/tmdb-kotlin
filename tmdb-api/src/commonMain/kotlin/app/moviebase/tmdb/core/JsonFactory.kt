@@ -7,11 +7,12 @@ import app.moviebase.tmdb.model.TmdbPersonCredit
 import app.moviebase.tmdb.model.TmdbSearchableListItem
 import app.moviebase.tmdb.model.TmdbShow
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonBuilder
 import kotlinx.serialization.modules.SerializersModule
 
 object JsonFactory {
 
-    fun buildJson(): Json = Json {
+    fun buildJson( builderAction: JsonBuilder.() -> Unit = {}): Json = Json {
         encodeDefaults = false
         ignoreUnknownKeys = true
         isLenient = true
@@ -32,5 +33,6 @@ object JsonFactory {
         }
         serializersModule = module
         classDiscriminator = "media_type"
+        builderAction.invoke(this)
     }
 }
