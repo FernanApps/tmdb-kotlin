@@ -122,9 +122,9 @@ data class TmdbPersonDetail(
 data class TmdbCrew(
     @SerialName("adult") val adult: Boolean = false,
     @SerialName("gender") val gender: TmdbGender = TmdbGender.UNKNOWN,
-    @SerialName("id") override val id: Int,
+    @SerialName("id") override val id: Int = -1,
     @SerialName("known_for_department") val knownForDepartment: TmdbDepartment? = null,
-    @SerialName("name") override val name: String,
+    @SerialName("name") override val name: String = "",
     @SerialName("original_name") val originalName: String? = null,
     @SerialName("popularity") override val popularity: Float? = null,
     @SerialName("profile_path") override val profilePath: String? = null,
@@ -136,10 +136,10 @@ data class TmdbCrew(
 @Serializable
 data class TmdbCast(
     @SerialName("adult") val adult: Boolean = false,
-    @SerialName("gender") val gender: TmdbGender,
-    @SerialName("id") override val id: Int,
+    @SerialName("gender") val gender: TmdbGender? = null,
+    @SerialName("id") override val id: Int = -1,
     @SerialName("known_for_department") val knownForDepartment: TmdbDepartment? = null,
-    @SerialName("name") override val name: String,
+    @SerialName("name") override val name: String = "",
     @SerialName("original_name") val originalName: String? = null,
     @SerialName("popularity") override val popularity: Float? = null,
     @SerialName("profile_path") override val profilePath: String? = null,
