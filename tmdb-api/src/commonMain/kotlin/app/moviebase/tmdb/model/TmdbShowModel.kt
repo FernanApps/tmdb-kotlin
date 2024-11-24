@@ -97,6 +97,7 @@ data class TmdbShowPageResult(
 
 @Serializable
 data class TmdbShowDetail(
+    @SerialName("adult") val adult: Boolean = false,
     @SerialName("id") override val id: Int,
     val name: String,
     @SerialName("poster_path") override val posterPath: String?,
@@ -136,7 +137,12 @@ data class TmdbShowDetail(
     @SerialName("videos") val videos: TmdbResult<TmdbVideo>? = null,
     @SerialName("content_ratings") val contentRatings: TmdbResult<TmdbContentRating>? = null,
     @SerialName("images") val images: TmdbImages? = null,
-    @SerialName("created_by") val createdBy: List<TmdbShowCreatedBy>? = null
+    @SerialName("created_by") val createdBy: List<TmdbShowCreatedBy>? = null,
+
+    @SerialName("keywords/keywords") val keywords: List<TmdbKeyword> = emptyList(),
+    @SerialName("recommendations") val recommendations: TmdbShowPageResult,
+    @SerialName("similar") val similar: TmdbShowPageResult
+
 ) : TmdbAnyItem, TmdbBackdropItem, TmdbPosterItem, TmdbRatingItem
 
 fun TmdbResult<TmdbContentRating>.getContentRating(country: String): String? =

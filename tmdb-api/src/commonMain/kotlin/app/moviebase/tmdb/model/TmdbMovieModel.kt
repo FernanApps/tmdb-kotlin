@@ -92,21 +92,23 @@ data class TmdbMoviePageResult(
 
 @Serializable
 data class TmdbMovieDetail(
-    val adult: Boolean,
+    @SerialName("adult") val adult: Boolean,
     @SerialName("backdrop_path") val backdropPath: String?,
+    @SerialName("belongs_to_collection") val belongsToCollection: TmdbCollection? = null,
     val budget: Long,
     @SerialName("genres") val genres: List<TmdbGenre>,
     val homepage: String? = null,
     val id: Int,
     @SerialName("imdb_id") val imdbId: String? = null,
+    @SerialName("origin_country") val originCountry: List<String> = emptyList(),
     val title: String,
     val runtime: Int? = null,
     @SerialName("original_title") val originalTitle: String,
     @SerialName("original_language") val originalLanguage: String,
     val overview: String,
     @SerialName("poster_path") val posterPath: String?,
-    @SerialName("vote_average") override val voteAverage: Float,
-    @SerialName("vote_count") override val voteCount: Int,
+    @SerialName("vote_average") override val voteAverage: Float = 0f,
+    @SerialName("vote_count") override val voteCount: Int = 0,
     @SerialName("external_ids") val externalIds: TmdbExternalIds? = null,
     val status: TmdbMovieStatus,
     val tagline: String,
@@ -120,9 +122,13 @@ data class TmdbMovieDetail(
     @SerialName("production_companies") val productionCompanies: List<TmdbCompany>? = null,
     @SerialName("production_countries") val productionCountries: List<TmdbCountry>? = null,
     @SerialName("watch/providers") val watchProviders: TmdbWatchProviderResult? = null,
-    @SerialName("credits") val credits: TmdbCredits? = null,
+    @SerialName("keywords/keywords") val keywords: List<TmdbKeyword> = emptyList(),
+    @SerialName("casts") val credits: TmdbCredits? = null,
     @SerialName("videos") val videos: TmdbResult<TmdbVideo>? = null,
-    @SerialName("images") val images: TmdbImages? = null
+    @SerialName("images") val images: TmdbImages? = null,
+    @SerialName("recommendations") val recommendations: TmdbMoviePageResult,
+    @SerialName("similar") val similar: TmdbMoviePageResult
+
 ) : TmdbRatingItem {
 
     val posterImage get(): TmdbImage? = TmdbImage.poster(posterPath)
