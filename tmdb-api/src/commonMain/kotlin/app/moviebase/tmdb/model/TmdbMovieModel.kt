@@ -122,7 +122,7 @@ data class TmdbMovieDetail(
     @SerialName("production_companies") val productionCompanies: List<TmdbCompany>? = null,
     @SerialName("production_countries") val productionCountries: List<TmdbCountry>? = null,
     @SerialName("watch/providers") val watchProviders: TmdbWatchProviderResult? = null,
-    @SerialName("keywords/keywords") val keywords: List<TmdbKeyword> = emptyList(),
+    @SerialName("keywords") val keywords: TmdbKeywordMovie? = null,
     @SerialName("casts") val credits: TmdbCredits? = null,
     @SerialName("videos") val videos: TmdbResult<TmdbVideo>? = null,
     @SerialName("images") val images: TmdbImages? = null,

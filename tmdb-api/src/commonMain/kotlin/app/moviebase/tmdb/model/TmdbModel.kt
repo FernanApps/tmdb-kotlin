@@ -106,6 +106,16 @@ data class TmdbGenre(
 )
 
 @Serializable
+data class TmdbKeywordMovie(
+    val keywords: List<TmdbKeyword>,
+)
+
+@Serializable
+data class TmdbKeywordTv(
+    @SerialName("results") val keywords: List<TmdbKeyword>,
+)
+
+@Serializable
 data class TmdbKeyword(
     val id: Int,
     val name: String

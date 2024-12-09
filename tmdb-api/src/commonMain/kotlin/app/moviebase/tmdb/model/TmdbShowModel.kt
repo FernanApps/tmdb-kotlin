@@ -139,7 +139,7 @@ data class TmdbShowDetail(
     @SerialName("images") val images: TmdbImages? = null,
     @SerialName("created_by") val createdBy: List<TmdbShowCreatedBy>? = null,
 
-    @SerialName("keywords/keywords") val keywords: List<TmdbKeyword> = emptyList(),
+    @SerialName("keywords") val keywords: TmdbKeywordTv? = null,
     @SerialName("recommendations") val recommendations: TmdbShowPageResult,
     @SerialName("similar") val similar: TmdbShowPageResult
 
